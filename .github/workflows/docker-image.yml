@@ -52,7 +52,8 @@ jobs:
         continue-on-error: true
 
   build-and-deploy:
-    if: github.ref == 'refs/heads/QA'
+    needs: [test, CodeQL, Snyk]
+    if: github.base_ref == 'refs/heads/QA'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
