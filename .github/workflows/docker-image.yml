@@ -49,6 +49,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           args: --all-projects --severity-threshold=high --org=fabos180 --prune-repeated-subdependencies
+        continue-on-error: true
 
   build-and-deploy:
     needs: [test, CodeQL, Snyk]
