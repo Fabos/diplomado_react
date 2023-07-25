@@ -52,7 +52,6 @@ jobs:
         continue-on-error: true
 
   build-and-deploy:
-    needs: [test]
     if: github.ref == 'refs/heads/QA'
     runs-on: ubuntu-latest
     steps:
