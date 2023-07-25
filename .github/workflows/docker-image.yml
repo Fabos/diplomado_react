@@ -48,7 +48,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --all-projects --severity-threshold=high --org=my-org-name --prune-repeated-subdependencies
+          args: --all-projects --severity-threshold=high --org=fabos180 --prune-repeated-subdependencies
 
   build-and-deploy:
     needs: [test, CodeQL, Snyk]
@@ -70,16 +70,16 @@ jobs:
       # Build and push Docker image for the 'QA' branch
       - name: Build Docker Image
         run: |
-          docker build -t byonit/dashboard-demo-logistic:0.0.1 .
-          docker build -t byonit/dashboard-demo-logistic:latest .
+          docker build -t fabos180/diplomado_project:0.0.1 .
+          docker build -t fabos180/diplomado_project:latest .
 
       - name: Push Docker Image
         run: |
-          docker push byonit/dashboard-demo-logistic:0.0.1
+          docker push fabos180/diplomado_project:0.0.1
 
       - name: Push Docker Image as latest
         run: |
-          docker push byonit/dashboard-demo-logistic:latest
+          docker push fabos180/diplomado_project:latest
 
       # Setup SSH and deploy Docker image to DigitalOcean for the 'QA' branch
       - name: Install ssh user and pasw
@@ -87,4 +87,4 @@ jobs:
 
       - name: Ejecutar acción
         run: |
-          sshpass -p ${{ secrets.SSH_PASSWORD_QA }} ssh -o StrictHostKeyChecking=no -p 22 ${{ secrets.SSH_USER_QA }}@${{ secrets.SSH_IP_QA }} 'cd demoLogisticApp && docker compose down -v && docker compose pull && docker compose up -d --build'
+          sshpass -p ${{ secrets.SSH_PASSWORD_QA }} ssh -o StrictHostKeyChecking=no -p 22 ${{ secrets.SSH_USER_QA }}@${{ secrets.SSH_IP_QA }} 'cd web && docker compose down -v && docker compose pull && docker compose up -d --build'
