@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Bienvenidos a nuestra Prueba de Concepto de DevSecOps con React y GitHub Actions!
+          Bienvenidos a nuestra Prueba de Concepto de DevSecOps con React y GitHub Actions! Para Universidad Areandina
         </p>
         <a
           className="App-link"
