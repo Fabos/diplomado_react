@@ -3,9 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 
 // ¡Componente vulnerable!
-function VulnerableComponent(props) {
-  return <div dangerouslySetInnerHTML={{ __html: props.userInput }} />;
-}
+// function VulnerableComponent(props) {
+//   return <div dangerouslySetInnerHTML={{ __html: props.userInput }} />;
+// }
 
 function App() {
   const [userInput, setUserInput] = useState('');
@@ -30,7 +30,7 @@ function App() {
           Visita nuestro repositorio en GitHub
         </a>
         <input type="text" value={userInput} onChange={handleInputChange} />
-        <VulnerableComponent userInput={userInput} />
+        {/* <VulnerableComponent userInput={userInput} /> */}
       </header>
     </div>
   );
