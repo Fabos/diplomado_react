@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+// ¡Componente vulnerable!
+function VulnerableComponent(props) {
+  return <div dangerouslySetInnerHTML={{ __html: props.userInput }} />;
+}
+
 function App() {
+  const [userInput, setUserInput] = useState('');
+
+  const handleInputChange = (event) => {
+    setUserInput(event.target.value);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +29,8 @@ function App() {
         >
           Visita nuestro repositorio en GitHub
         </a>
+        <input type="text" value={userInput} onChange={handleInputChange} />
+        <VulnerableComponent userInput={userInput} />
       </header>
     </div>
   );
