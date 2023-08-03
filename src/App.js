@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 // ¡Componente vulnerable!
+//<img src="x" onerror="alert('Ataque XSS!');" />
 // function VulnerableComponent(props) {
 //   return <div dangerouslySetInnerHTML={{ __html: props.userInput }} />;
 // }
@@ -19,7 +20,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Bienvenidos a nuestra Prueba de Concepto de DevSecOps con React y GitHub Actions! Para Universidad Areandina
+          Bienvenidos a nuestra Prueba de Concepto de DevSecOps con React y GitHub Actions! Fabian Pinzon
         </p>
         <a
           className="App-link"
