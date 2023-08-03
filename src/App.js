@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+// ¡Componente vulnerable!
+//<img src="x" onerror="alert('Ataque XSS!');" />
+// function VulnerableComponent(props) {
+//   return <div dangerouslySetInnerHTML={{ __html: props.userInput }} />;
+// }
+
 function App() {
+  const [userInput, setUserInput] = useState('');
+
+  const handleInputChange = (event) => {
+    setUserInput(event.target.value);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Bienvenidos a nuestra Prueba de Concepto de DevSecOps con React y GitHub Actions!
+          Bienvenidos a nuestra Prueba de Concepto de DevSecOps con React y GitHub Actions! Fabian Pinzon
         </p>
         <a
           className="App-link"
@@ -18,6 +30,8 @@ function App() {
         >
           Visita nuestro repositorio en GitHub
         </a>
+        <input type="text" value={userInput} onChange={handleInputChange} />
+        {/* <VulnerableComponent userInput={userInput} /> */}
       </header>
     </div>
   );
